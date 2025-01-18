@@ -26,8 +26,7 @@ const AllProducts = () => {
     skip: skip,
   });
   const products = data?.products || [];
-  
-  
+
   console.log(searchTerm);
   // Pagination
   const totalPages = Math.ceil((data?.total || 0) / itemsPerPage);
@@ -70,13 +69,13 @@ const AllProducts = () => {
 
   return (
     <section className="">
-      <div >
+      <div>
         {/* filtering */}
         <Row>
           <Col md={4}>
             <Input
-             placeholder="Search Product..."
-             onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search Product..."
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </Col>
           <Col md={2}>
