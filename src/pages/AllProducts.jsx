@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { Button, Col, FormGroup, Input, Label, Row, Table } from "reactstrap";
 import Swal from "sweetalert2";
 import Loading from "../components/Loading";
-import MyPagination from "../components/myPagination";
+import MyPagination from "../components/MyPagination";
 import {
   useDeleteProductMutation,
   useGetAllCategoriesQuery,

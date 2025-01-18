@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { Button, Col, FormGroup, Label, Row } from "reactstrap";
 import * as Yup from "yup";
-import { useLoginMutation } from "../redux/api/AuthApi/AuthApi";
+import { useLoginMutation } from "../redux/api/authApi/authApi";
 import { setUser } from "../redux/features/authSlice";
 
 const Login = () => {
@@ -50,7 +50,8 @@ const Login = () => {
         <Col md={4}>
           <div className="border px-3 mx-auto mb-5">
             <p>
-              Sample username: <span className="ms-2 fs-5 fw-bold">isabellad</span>
+              Sample username:{" "}
+              <span className="ms-2 fs-5 fw-bold">isabellad</span>
             </p>
             <p>
               Sample password:{" "}
@@ -61,7 +62,8 @@ const Login = () => {
         <Col md={4}>
           <div className="border  px-3 mx-auto mb-5">
             <p>
-              Sample username: <span className="ms-2 fs-5 fw-bold">williamg</span>
+              Sample username:{" "}
+              <span className="ms-2 fs-5 fw-bold">williamg</span>
             </p>
             <p>
               Sample password:{" "}
