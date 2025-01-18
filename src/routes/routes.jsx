@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "../App";
-import AdminDashboardLayout from "../layout/adminDashboardLayout";
+import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
 import EditProduct from "../pages/EditProduct";
