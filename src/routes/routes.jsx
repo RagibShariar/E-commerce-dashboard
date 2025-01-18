@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import App from "../App";
+import AdminDashboard from "../components/Admin/AdminDashboard";
 import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import AddProduct from "../pages/AddProduct";
 import AllProducts from "../pages/AllProducts";
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <AdminDashboard />,
       },
 
       {

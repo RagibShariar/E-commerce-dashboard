@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Button, Col, FormGroup, Label, Row } from "reactstrap";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
@@ -24,7 +24,7 @@ const EditProduct = () => {
     imageUrl: "",
   });
   const [updateProduct] = useUpdateProductMutation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Validation schema using Yup
   const validationSchema = Yup.object({

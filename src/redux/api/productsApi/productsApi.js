@@ -3,14 +3,17 @@ import { baseApi } from "../baseApi";
 const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({ searchTerm, category, limit, skip }) => {
+      query: ({ searchTerm, category, sortBy, sortOrder, limit, skip }) => {
         let url = `/products`; // Base URL
 
         if (searchTerm) {
           url = `/products/search?q=${searchTerm}`; // Search-specific URL
         } else if (category) {
           url += `/category/${category}?limit=${limit}&skip=${skip}`; // Category-specific URL
-        } else {
+        } else if (sortBy) {
+          url = `/products?sortBy=${sortBy}&order=${sortOrder}&limit=${limit}&skip=${skip}` 
+        }
+        else {
           // Regular product list URL
           url += `?limit=${limit}&skip=${skip}`;
         }
