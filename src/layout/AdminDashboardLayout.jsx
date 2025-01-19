@@ -11,11 +11,51 @@ import {
 import Header from "../components/Header";
 
 const AdminDashboardLayout = () => {
-  // State to manage Offcanvas visibility
   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
 
   // Toggle function for Offcanvas
   const toggleOffcanvas = () => setIsOffcanvasOpen(!isOffcanvasOpen);
+
+  const menuItems = (
+    <ul className="list-unstyled mt-3">
+      <li className="mb-2">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `d-block    p-2 rounded text-decoration-none ${
+              isActive ? "bg-primary text-white " : "text-dark"
+            }`
+          }
+        >
+          <i className="bi bi-house-door me-2"></i> Dashboard
+        </NavLink>
+      </li>
+      <li className="mb-2 ">
+        <NavLink
+          to="/products"
+          className={({ isActive }) =>
+            `d-block    p-2 rounded text-decoration-none ${
+              isActive ? "bg-primary text-white " : "text-dark"
+            }`
+          }
+        >
+          <i className="bi bi-box-seam me-2"></i> All Products
+        </NavLink>
+      </li>
+      <li className="mb-2 ">
+        <NavLink
+          to="/add-product"
+          className={({ isActive }) =>
+            `d-block    p-2 rounded text-decoration-none ${
+              isActive ? "bg-primary text-white " : "text-dark"
+            }`
+          }
+        >
+          <i className="bi bi-box-seam me-2"></i> Add Product
+        </NavLink>
+      </li>
+    </ul>
+  );
 
   return (
     <section className="">
@@ -35,33 +75,8 @@ const AdminDashboardLayout = () => {
 
           {/* Offcanvas for mobile menu */}
           <Offcanvas isOpen={isOffcanvasOpen} toggle={toggleOffcanvas}>
-            <OffcanvasHeader toggle={toggleOffcanvas}>
-              <h5 className="text-primary">Menu</h5>
-            </OffcanvasHeader>
-            <OffcanvasBody>
-              {/* Mobile menu items */}
-              <ul className="list-unstyled">
-                <li>
-                  <Link to="/" className="text-decoration-none text-dark">
-                    <i className="bi bi-house-door"></i> Dashboard
-                  </Link>
-                </li>
-             
-                <li>
-                  <Link
-                    to="/settings"
-                    className="text-decoration-none text-dark"
-                  >
-                    <i className="bi bi-gear"></i> Settings
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/logout" className="text-decoration-none text-dark">
-                    <i className="bi bi-box-arrow-right"></i> Logout
-                  </Link>
-                </li>
-              </ul>
-            </OffcanvasBody>
+            <OffcanvasHeader toggle={toggleOffcanvas}></OffcanvasHeader>
+            <OffcanvasBody>{menuItems}</OffcanvasBody>
           </Offcanvas>
         </Col>
 
@@ -75,45 +90,7 @@ const AdminDashboardLayout = () => {
               Admin Dashboard
             </Link>
           </h5>
-          <ul className="list-unstyled mt-3">
-            <li className="mb-2">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `d-block    p-2 rounded text-decoration-none ${
-                    isActive ? "bg-primary text-white " : "text-dark"
-                  }`
-                }
-              >
-                <i className="bi bi-house-door me-2"></i> Dashboard
-              </NavLink>
-            </li>
-            <li className="mb-2 ">
-              <NavLink
-                to="/products"
-                className={({ isActive }) =>
-                  `d-block    p-2 rounded text-decoration-none ${
-                    isActive ? "bg-primary text-white " : "text-dark"
-                  }`
-                }
-              >
-                <i className="bi bi-box-seam me-2"></i> All Products
-              </NavLink>
-            </li>
-            <li className="mb-2 ">
-              <NavLink
-                to="/add-product"
-                className={({ isActive }) =>
-                  `d-block    p-2 rounded text-decoration-none ${
-                    isActive ? "bg-primary text-white " : "text-dark"
-                  }`
-                }
-              >
-                <i className="bi bi-box-seam me-2"></i> Add Product
-              </NavLink>
-            </li>
-            
-          </ul>
+          {menuItems}
         </Col>
 
         {/* Main content area */}
