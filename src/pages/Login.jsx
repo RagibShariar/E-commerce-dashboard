@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
 import { Button, Col, FormGroup, Label, Row } from "reactstrap";
 import * as Yup from "yup";
 import { useLoginMutation } from "../redux/api/authApi/authApi";
 import { setUser } from "../redux/features/authSlice";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const [login] = useLoginMutation();
@@ -26,6 +26,7 @@ const Login = () => {
 
       if (res.data) {
         dispatch(setUser(res.data));
+        localStorage.setItem("auth", res.data.accessToken);
         navigate("/");
       }
     } catch (error) {
