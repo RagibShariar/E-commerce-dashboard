@@ -9,9 +9,12 @@ import {
   useGetAllCategoriesQuery,
   useGetProductsQuery,
 } from "../redux/api/productsApi/productsApi";
+import ProductCardModal from "../components/ProductCardModal";
 
 const AllProducts = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortConfig, setSortConfig] = useState({ column: null, order: "asc" });
@@ -107,8 +110,25 @@ const AllProducts = () => {
     return false; // Show no products if no filter is applied
   });
 
+  // Product Modal
+  const handleShowModal = (productId) => {
+    setSelectedProduct(productId);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <section className="">
+      {showModal && (
+        <ProductCardModal
+          product={selectedProduct}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
       <div>
         {/* searching */}
         <Row>
@@ -217,7 +237,12 @@ const AllProducts = () => {
           {filteredProducts?.map((product) => (
             <tr key={product.id}>
               <th scope="row">{product.id}</th>
-              <td>{product.title}</td>
+              <td
+                className="cursor-pointer"
+                onClick={() => handleShowModal(product.id)}
+              >
+                {product.title}
+              </td>
               <td>{product.price}</td>
               <td>{product.stock}</td>
               <td>{product.minimumOrderQuantity}</td>
