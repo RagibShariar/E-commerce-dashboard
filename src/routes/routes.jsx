@@ -6,11 +6,16 @@ import AllProducts from "../pages/AllProducts";
 import EditProduct from "../pages/EditProduct";
 import Login from "../pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
+import Test from "../pages/Test";
 
 export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/test",
+    element: <Test/>
   },
   {
     path: "/",
