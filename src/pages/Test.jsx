@@ -156,3 +156,97 @@ const Test = () => {
 };
 
 export default Test;
+
+
+// --------------------------------------------
+// 1. Using React Router (Recommended Approach)
+// --------------------------------------------
+
+// import { useSearchParams } from 'react-router';
+
+// const Test = () => {
+//   // searchParams is like a Map, setSearchParams is like setState
+//   const [searchParams, setSearchParams] = useSearchParams();
+
+//   // Get values from URL (returns null if not present)
+//   const name = searchParams.get('name') || '';
+//   const age = searchParams.get('age') || '';
+
+//   const handleSubmit = () => {
+//     // This will automatically update the URL
+//     setSearchParams({
+//       ...(name && { name }), // Only add if name exists
+//       ...(age && { age })    // Only add if age exists
+//     });
+//   };
+
+//   const clearNameParam = () => {
+//     // Creates new object without the name parameter
+//     const newParams = Object.fromEntries(searchParams);
+//     delete newParams.name;
+//     setSearchParams(newParams);
+//   };
+
+//   const clearAgeParam = () => {
+//     const newParams = Object.fromEntries(searchParams);
+//     delete newParams.age;
+//     setSearchParams(newParams);
+//   };
+
+//   const clearAllParams = () => {
+//     setSearchParams({});
+//   };
+
+//   return (
+//     <div className="container mt-4">
+//       <div className="row mb-3">
+//         <div className="col-md-6">
+//           <label className="form-label">Name:</label>
+//           <div className="input-group">
+//             <input
+//               type="text"
+//               value={name}
+//               onChange={(e) => setSearchParams(prev => ({
+//                 ...Object.fromEntries(prev),
+//                 name: e.target.value
+//               }))}
+//               className="form-control"
+//             />
+//             <button onClick={clearNameParam} className="btn btn-danger">Clear</button>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="row mb-3">
+//         <div className="col-md-6">
+//           <label className="form-label">Age:</label>
+//           <div className="input-group">
+//             <input
+//               type="number"
+//               value={age}
+//               onChange={(e) => setSearchParams(prev => ({
+//                 ...Object.fromEntries(prev),
+//                 age: e.target.value
+//               }))}
+//               className="form-control"
+//             />
+//             <button onClick={clearAgeParam} className="btn btn-danger">Clear</button>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="row">
+//         <div className="col">
+//           <button onClick={handleSubmit} className="btn btn-primary me-2">
+//             Update URL Parameters
+//           </button>
+//           <button onClick={clearAllParams} className="btn btn-danger">
+//             Clear All
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Test;
