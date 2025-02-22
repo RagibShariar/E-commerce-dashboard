@@ -1,15 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
 import { Button, Col, FormGroup, Label, Row } from "reactstrap";
 import * as Yup from "yup";
 import { useLoginMutation } from "../redux/api/authApi/authApi";
-import { setUser } from "../redux/features/authSlice";
-import { useNavigate } from "react-router";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Validation schema using Yup
   const validationSchema = Yup.object({
@@ -25,9 +25,10 @@ const Login = () => {
       const res = await login(values);
 
       if (res.data) {
-        dispatch(setUser(res.data));
+        // dispatch(setUser(res.data));
         localStorage.setItem("auth", res.data.accessToken);
-        navigate("/");
+        const redirectPath = location.state?.from || "/";
+        navigate(redirectPath, { replace: true });
       }
     } catch (error) {
       console.log(error);
@@ -79,7 +80,7 @@ const Login = () => {
             <div className="card-body">
               <h3 className="card-title text-center">Login</h3>
               <Formik
-                initialValues={{ username: "", password: "" }}
+                initialValues={{ username: "emilys", password: "emilyspass" }}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >

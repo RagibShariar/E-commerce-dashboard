@@ -1,11 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
 import { Button } from "reactstrap";
-import { logout } from "../redux/features/authSlice";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleLogout = () => {
-    dispatch(logout());
+    // dispatch(logout());
+    localStorage.removeItem("auth");
+    navigate("/login", { state: { from: location.pathname } });
   };
   return (
     <>
