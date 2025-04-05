@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Test from "../pages/Test";
 import { lazy, Suspense } from "react";
+import Test2 from "../pages/Test2";
 
 const AllProducts = lazy(() => import("../pages/AllProducts"));
 const EditProduct = lazy(() => import("../pages/EditProduct"));
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
   {
     path: "/test",
     element: <Test />,
+  },
+  {
+    path: "/test2",
+    element: <Test2 />,
   },
   {
     path: "/",
